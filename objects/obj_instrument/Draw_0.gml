@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(gameManager.currentState==states.start){
+//if(gameManager.currentState==states.start){
 
 	if(selected){
 		shader_set(sh_whiteOutline);
@@ -17,5 +17,5 @@ if(gameManager.currentState==states.start){
 
 	shader_reset();
 
-}
+//}
 

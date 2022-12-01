@@ -134,3 +134,40 @@ function SetShaders(){
 	texelW=texture_get_texel_width(sprite_get_texture(sprite_index,0));
 	texelH=texture_get_texel_height(sprite_get_texture(sprite_index,0));
 }
+
+function ChangeState(s){
+	with(obj_gameManager){
+		var prev=currentState;
+		currentState=s;	
+		ResetAnimations(prev);
+		switch(currentState){
+			case states.start:
+				
+				break;
+			case states.playing:
+				Start();
+				show_debug_message("start");
+				break;
+			case states.ended:
+				Stop();
+				break;
+		}
+	}
+}
+
+function ResetAnimations(prev){
+	with(obj_gameManager){
+		switch(currentState){
+			case states.start:
+			
+				break;
+			case states.playing:
+				with(obj_instrument){
+					targetx=targetx+room_width;
+					startx=x;
+					animTime=0;
+				}
+				break;
+		}
+	}
+}

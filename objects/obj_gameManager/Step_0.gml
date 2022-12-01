@@ -12,12 +12,12 @@ if(settings==noone){
 if(!settings.active){
 	with(timeKeeper){
 		if(!playing && keyboard_check_pressed(vk_space) && obj_gameManager.currentInstrument!=-1){
-			Start()
+			ChangeState(states.playing);
 		}else if(playing && keyboard_check_pressed(vk_space)){
-			Stop()
+			ChangeState(states.ended);
 		}else if(playing){
 			if(!audio_is_playing(snd_claps)){
-				Stop();
+				ChangeState(states.ended);
 			}
 		}
 	}
@@ -52,6 +52,7 @@ if(timeKeeper.playing && !settings.active){
 					break;
 				}
 			}
+			obj_gameUI_front.animTime=0;
 		}
 		if(!scored){
 			cooldown=penaltyTime;
