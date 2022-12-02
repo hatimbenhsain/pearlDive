@@ -11,19 +11,29 @@ if(!spriteSet){
 	spriteSet=true;
 }
 if(timeKeeper.playing && !scoredPrev){
-	x=80+pixelsPerSec*(time-timeKeeper.songPosition);	
+	x=notesX+pixelsPerSec*(time-timeKeeper.songPosition);	
 }
 if(scoredPrev!=scored){
-	alarm[0]=room_speed*0.3
+	alarm[0]=room_speed*disappearingTime;
 	if(button=0){
 		audio_play_sound(snd_drum1,1,false);
 	}else{
 		audio_play_sound(snd_drum2,1,false);
 	}
+	targetx=room_width-24;
+	targety=24;
+	startx=x;
+	starty=y;
+	animationTime=0;
 }
 
 if(scoredPrev){
-	image_alpha-=delta_time/(1000000*0.3);
+	animationTime+=delta_time/1000000;
+	image_alpha=1-animcurve_channel_evaluate(channel3,(animationTime/animationLength));
+	show_debug_message(image_alpha);
+	x=startx+(targetx-startx)*animationTime/animationLength;
+	//x=startx+(targetx-startx)*animcurve_channel_evaluate(channel4,animationTime/animationLength);
+	y=starty+(targety-starty)*animcurve_channel_evaluate(channel2,(animationTime/animationLength));
 }
 
 scoredPrev=scored;

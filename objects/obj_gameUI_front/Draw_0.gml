@@ -7,8 +7,8 @@ var tk=gameManager.timeKeeper
 
 
 if(tk.playing){
-	draw_sprite(spr_basket_outside,0,80,144);
-	draw_sprite_ext(asset_get_index("spr_instrument"+string(gameManager.currentInstrument)),0,34,144,
+	draw_sprite(spr_basket_outside,0,notesX,notesY);
+	draw_sprite_ext(asset_get_index("spr_instrument"+string(gameManager.currentInstrument)),0,notesX-46,notesY,
 	instrumScale,instrumScale,0,c_white,1);
 	draw_set_color(c_black);
 	draw_set_color(c_white);

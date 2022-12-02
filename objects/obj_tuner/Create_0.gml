@@ -6,4 +6,10 @@ timeWindows=[[0.074,0.132,0.19],[0.068,0.124,0.18],[0.062,0.116,0.17],[0.056,0.1
 [0.02,0.06,0.1]];
 scores=[300,100,50];
 
+notesY=134;
+notesX=80;
+
+diwaniyaX=222;
+diwaniyaY=90;
+
 penaltyTime=0.2;		//time after a click that a click will not be registered

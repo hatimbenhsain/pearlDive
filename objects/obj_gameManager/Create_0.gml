@@ -9,6 +9,9 @@ scores=obj_tuner.scores;
 difficultyLevel=1;
 
 currentScore=0;
+scoreToAdd=0;
+lastScoreTime=0;
+lastScoreLength=0.5;
 
 notes=ds_list_create();
 
@@ -48,6 +51,7 @@ for(var i=0;i<instrumentNumber;i++){
 screenScale=display_get_gui_width()/room_width;
 
 currentState=states.start;
+
 
 claps=true;
 clapSprites=[spr_hands1,spr_hands2,spr_hands3,spr_hands1,spr_hands2,spr_hands3,spr_hands2,spr_hands3,spr_hands1];

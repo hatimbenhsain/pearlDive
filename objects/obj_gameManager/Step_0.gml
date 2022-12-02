@@ -1,5 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
+if(scoreToAdd!=0){
+	lastScoreTime+=delta_time/1000000
+	if(currentState!=states.playing || lastScoreTime>=lastScoreLength){
+		currentScore+=scoreToAdd;
+		scoreToAdd=0;
+	}
+}
+
 if(timeKeeper==noone){
 	timeKeeper=instance_find(obj_timeKeeper,0);
 	uiFront.timeKeeper=timeKeeper;
@@ -44,10 +52,13 @@ if(timeKeeper.playing && !settings.active){
 			for(var i=0;i<array_length(timeWindows[difficultyLevel]);i++){
 				if(timeKeeper.songPosition>nextNote.time-timeWindows[difficultyLevel][i]/2 && 
 				timeKeeper.songPosition<nextNote.time+timeWindows[difficultyLevel][i]/2){
-					currentScore+=scores[i];
+					currentScore+=scoreToAdd;
+					scoreToAdd=scores[i];
+					lastScoreTime=0;
 					nextNote.scored=true;
-					var scoreUI=instance_create_depth(0,0,depth,obj_scoreUI);
-					scoreUI.subimg=i;
+					nextNote.scoreValue=i;
+					//var scoreUI=instance_create_depth(0,0,depth,obj_scoreUI);
+					//scoreUI.subimg=i;
 					scored=true
 					break;
 				}
