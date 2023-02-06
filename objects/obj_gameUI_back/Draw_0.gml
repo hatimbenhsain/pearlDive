@@ -35,5 +35,6 @@ if(tk.playing){
 	if(spotlight){
 		draw_sprite_ext(spr_spotlight,spotlightIndex,0,0,image_xscale,image_yscale,0,c_white,spotlightAlpha);
 	}
+
 }
 

@@ -13,29 +13,25 @@ gameH=display_get_height();
 guiW=display_get_gui_width();
 guiH=display_get_gui_height();
 
-shaderBloomLum=sh_bloom_lum;
-ubloomTreshold=shader_get_uniform(shaderBloomLum,"bloomTreshold");
-ubloomRange=shader_get_uniform(shaderBloomLum,"bloomRange");
-usize=shader_get_uniform(sh_blur,"size");
-
-bloomTreshold=0.1;
-bloomRange=0.1;
-bloomIntensity=0.3;
-spotlightAlpha=0.4;
-
-
 ubloomDarken=shader_get_uniform(sh_bloom_blend,"bloomDarken");
 ubloomSaturation=shader_get_uniform(sh_bloom_blend,"bloomSaturation");
 ubloomTexture=shader_get_sampler_index(sh_bloom_blend,"bloomTexture");
 
+ubloomTreshold=shader_get_uniform(sh_bloom_lum,"bloomTreshold");
+ubloomRange=shader_get_uniform(sh_bloom_lum,"bloomRange");
 ubloomIntensity=shader_get_uniform(sh_bloom_lum,"bloomIntensity");
-umaskTexture=shader_get_sampler_index(sh_bloom_lum,"maskTexture");
 umaskTransform=shader_get_uniform(sh_bloom_lum,"maskTransform");
+umaskTexture=shader_get_sampler_index(sh_bloom_lum,"maskTexture");
+maskTransfrom=[];
 
-spotlight=true;
-spotlightIndex=5;
+bloomTreshold=0.1;
+bloomRange=0.1;
+bloomIntensity=0.3;
+
+
 
 GetMaskTransform=function(){
+	maskTransform=[];
 	var maskUV=sprite_get_uvs(spr_spotlight,spotlightIndex);
 	var maskUVw=maskUV[2]-maskUV[0];
 	var maskUVh=maskUV[3]-maskUV[1];
@@ -43,28 +39,32 @@ GetMaskTransform=function(){
 	var scaleY=sprite_get_height(spr_spotlight)/(guiH*2);
 	scaleX=maskUVw;
 	scaleY=maskUVh;
-	maskTransfrom=[scaleX,scaleY,maskUV[0],maskUV[1]];
+	maskTransform=[scaleX,scaleY,maskUV[0],maskUV[1]];
 }
+
+
+
+spotlight=true;
+spotlightIndex=5;
+spotlightAlpha=0.4;
 
 bloomTexture=-1;
 bloomDarken=1;
 bloomSaturation=1;
 
-ublurSteps=shader_get_uniform(sh_blur2,"blurSteps");
 usigma=shader_get_uniform(sh_blur2,"sigma");
 utexelSize=shader_get_uniform(sh_blur2,"texelSize");
 ublurVector=shader_get_uniform(sh_blur2,"blurVector");
 
-blurSteps=10;
+
 sigma=0.8;
-texelW=1/guiW;
-texelH=1/guiH;
+texelW=1000/guiW;
+texelH=1000/guiH;
+
 
 srf_ping=-1;
 srf_pong=-1;
 
-srf_back=-1;
-srf_front=-1;
 
 application_surface_draw_enable(false);
 

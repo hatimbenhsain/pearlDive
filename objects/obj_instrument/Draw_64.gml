@@ -16,7 +16,7 @@ if(hovered){
 
 shader_reset();
 
-if(gameManager.currentState==states.start){
+if(gameManager.currentState==states.start && gameManager.startStages[gameManager.startStage]=="instrument"){
 	
 	var anyHovered=false;
 	with(obj_instrument){

@@ -2,16 +2,11 @@
 // You can write your code in this editor
 var tk=gameManager.timeKeeper
 
-if(!surface_exists(srf_back)){
-	srf_back=surface_create(gameW,gameH);	
-}
-if(!surface_exists(srf_front)){
-	srf_front=surface_create(gameW,gameH);	
-}
 if(!surface_exists(srf_ping)){
 	srf_ping=surface_create(guiW,guiH);	
 	maskTexture=sprite_get_texture(spr_spotlight,spotlightIndex);
-	
+	show_debug_message("mask texture");
+	show_debug_message(array_length(maskTexture));
 }
 if(!surface_exists(srf_pong)){
 	srf_pong=surface_create(guiW,guiH);	
@@ -22,30 +17,23 @@ if(!surface_exists(srf_pong)){
 
 if(gameManager.currentState==states.playing && spotlight){
 	
-	shader_set(shaderBloomLum);
+	shader_set(sh_bloom_lum);
 	GetMaskTransform();
+	show_debug_message(ubloomIntensity);
+	show_debug_message(usigma);
+	shader_set_uniform_f(ubloomIntensity,bloomIntensity);
 	shader_set_uniform_f(ubloomRange,bloomRange);
 	shader_set_uniform_f(ubloomTreshold,bloomTreshold);
-	shader_set_uniform_f(ubloomIntensity,bloomIntensity);
-	shader_set_uniform_f_array(umaskTransform,maskTransfrom);
+	shader_set_uniform_f_array(umaskTransform,maskTransform);
 	texture_set_stage(umaskTexture,maskTexture);
-
-
 	surface_set_target(srf_ping);
 	draw_surface(application_surface,0,0);
 	surface_reset_target();
 
 	gpu_set_tex_filter(true);
 
-	//shader_set(sh_blur);
-	//shader_set_uniform_f(usize,gameW,gameH,16)
-	//surface_set_target(srf_pong);
-	//draw_surface(srf_ping,0,0);
-	//surface_reset_target();
-	//shader_reset();
 
 	shader_set(sh_blur2);
-	shader_set_uniform_f(ublurSteps,blurSteps);
 	shader_set_uniform_f(utexelSize,texelW,texelH);
 	shader_set_uniform_f(usigma,sigma);
 	shader_set_uniform_f(ublurVector,1,0);

@@ -64,6 +64,9 @@ if(timeKeeper.playing && !settings.active){
 	if(noteIndex+1<ds_list_size(notes) && (nextNote.scored || 
 	timeKeeper.songPosition>nextNote.time+timeWindows[difficultyLevel]
 	[array_length(timeWindows[difficultyLevel])-1]/2)){
+		if(!nextNote.scored){
+			detailScores.miss+=1;	
+		}
 		noteIndex++;
 		nextNote=notes[|noteIndex];
 		show_debug_message(noteIndex);
@@ -84,6 +87,17 @@ if(timeKeeper.playing && !settings.active){
 					lastScoreTime=0;
 					nextNote.scored=true;
 					nextNote.scoreValue=i;
+					switch(i){
+						case 0:
+							detailScores.perfect+=1;
+							break;
+						case 1:
+							detailScores.great+=1;
+							break;
+						case 2:
+							detailScores.good+=1;
+							break;
+					}
 					//var scoreUI=instance_create_depth(0,0,depth,obj_scoreUI);
 					//scoreUI.subimg=i;
 					scored=true
@@ -122,3 +136,43 @@ if(keyboard_check_pressed(vk_escape)){
 		timeKeeper.playing=true;
 	}
 }
+
+if(lastStartStage!=startStage){
+	switch(startStages[startStage]){
+		case "song":
+			break;
+		case "instrument" :
+			if(lastStartStage<startStage){
+				with(obj_instrument){
+					instance_destroy(self);	
+				}
+				for(var i=0;i<instrumentNumber;i++){
+					var xx=54*(i+0.5-instrumentNumber/2)+room_width/2;
+					instance_create_depth(xx,room_height/2,depth-1.9,asset_get_index("obj_instrument"+string(i+1)));	
+				}
+			}else{
+				with(obj_instrument){
+					targetx=targetx+room_width;
+					startx=x;
+					animTime=0;
+				}
+			}
+			break;
+	}
+	switch(startStages[lastStartStage]){
+		case "instrument" :
+			var s=-1;
+			if(lastStartStage>startStage){
+				s=1;
+			}
+			with(obj_instrument){
+				targetx=targetx+room_width*(s);
+				startx=x;
+				animTime=0;
+			}
+			break;
+	}
+	
+}
+
+lastStartStage=startStage;

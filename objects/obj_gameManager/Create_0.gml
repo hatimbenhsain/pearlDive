@@ -9,6 +9,12 @@ scores=obj_tuner.scores;
 difficultyLevel=1;
 
 currentScore=0;
+detailScores={
+	perfect:0,
+	great:0,
+	good:0,
+	miss:0
+}
 scoreToAdd=0;
 lastScoreTime=0;
 lastScoreLength=0.5;
@@ -43,12 +49,6 @@ enum states {
 
 song=snd_backingTrack1;
 
-
-
-for(var i=0;i<instrumentNumber;i++){
-	var xx=54*(i+0.5-instrumentNumber/2)+room_width/2;
-	instance_create_depth(xx,room_height/2,depth-1.9,asset_get_index("obj_instrument"+string(i+1)));	
-}
 
 screenScale=display_get_gui_width()/room_width;
 
@@ -96,3 +96,31 @@ array_foreach(musicians,function(m,i){
 	m.lastImg=0;
 	m.noteIndex=0;
 })
+
+songs=[
+{
+	name:"Test Song",
+	description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+	instruments:["merwas","hawan","tabel","yahala","tar","hands"],
+	difficulty:1
+},
+{
+	name:"Sawt Arabi",
+	description:"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	instruments:["hands","merwas"],
+	difficulty:3
+}
+]
+
+instrumentMap=ds_map_create();
+instrumentMap[?"merwas"]=1;
+instrumentMap[?"hawan"]=2;
+instrumentMap[?"tabel"]=3;
+instrumentMap[?"yahala"]=4;
+instrumentMap[?"tar"]=5;
+instrumentMap[?"hands"]=6;
+
+startStages=["song","instrument","difficulty"];	//stages of options to go through at the start
+startStage=0;		//current stage of options
+lastStartStage=0;
+songIndex=0;

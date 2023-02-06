@@ -15,7 +15,7 @@ gameManager=instance_find(obj_gameManager,0);
 y=65;
 
 targetx=x;
-x=x-room_width;
+x=x+room_width;
 startx=x;
 
 targety=y;

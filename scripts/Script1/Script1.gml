@@ -10,7 +10,13 @@ function CheckCollisionPoint(xx,yy,sx,sy,w,h){
 
 function Start(){
 	with(obj_gameManager){
-		currentScore=0;	
+		currentScore=0;
+		detailScores={
+			perfect:0,
+			great:0,
+			good:0,
+			miss:0
+		}
 		currentState=states.playing;
 		timeKeeper.song=song;
 	}
@@ -172,11 +178,7 @@ function ResetAnimations(prev){
 			
 				break;
 			case states.playing:
-				with(obj_instrument){
-					targetx=targetx+room_width;
-					startx=x;
-					animTime=0;
-				}
+				
 				break;
 		}
 	}
