@@ -26,8 +26,15 @@ if(tk.playing){
 	//draw_sprite(spr_musician2,0,diwaniyaX-33,diwaniyaY-4);
 	//draw_sprite(spr_musician1,0,diwaniyaX-53,diwaniyaY+6);
 
+	
 	var drawMusician=function(m,i){
-		draw_sprite(m.spr,m.image,diwaniyaX+m.x,diwaniyaY+m.y);
+		var ins=gameManager.songs[gameManager.songIndex].instruments;
+		for(var k=0;k<array_length(ins);k++){
+			if(i+1==gameManager.instrumentMap[?ins[k]]){
+				draw_sprite(m.spr,m.image,diwaniyaX+m.x,diwaniyaY+m.y);
+				break;
+			}
+		}
 	}
 	
 	array_foreach(gameManager.musicians,drawMusician);

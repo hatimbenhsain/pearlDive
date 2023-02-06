@@ -10,7 +10,6 @@ if(gameManager.currentState==states.start  && gameManager.startStage>0){
 
 if(active && selected){
 	gameManager.startStage-=1;
-	show_debug_message("next");
 }
 
 

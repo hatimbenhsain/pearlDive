@@ -102,13 +102,13 @@ songs=[
 	name:"Test Song",
 	description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
 	instruments:["merwas","hawan","tabel","yahala","tar","hands"],
-	difficulty:1
+	difficulty:3
 },
 {
 	name:"Sawt Arabi",
 	description:"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 	instruments:["hands","merwas"],
-	difficulty:3
+	difficulty:1
 }
 ]
 

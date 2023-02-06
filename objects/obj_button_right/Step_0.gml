@@ -2,14 +2,14 @@
 // You can write your code in this editor
 
 
-if(gameManager.currentState==states.start  && gameManager.startStage<array_length(gameManager.startStages)-1){
+if(gameManager.currentState==states.start  && gameManager.startStages[gameManager.startStage]=="song"){
 	active=true;	
 }else{
 	active=false;	
 }
 
 if(active && selected){
-	gameManager.startStage+=1;
+	gameManager.songIndex=(gameManager.songIndex+1)%array_length(gameManager.songs);
 }
 
 

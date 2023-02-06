@@ -5,8 +5,6 @@ var tk=gameManager.timeKeeper
 if(!surface_exists(srf_ping)){
 	srf_ping=surface_create(guiW,guiH);	
 	maskTexture=sprite_get_texture(spr_spotlight,spotlightIndex);
-	show_debug_message("mask texture");
-	show_debug_message(array_length(maskTexture));
 }
 if(!surface_exists(srf_pong)){
 	srf_pong=surface_create(guiW,guiH);	
@@ -19,8 +17,6 @@ if(gameManager.currentState==states.playing && spotlight){
 	
 	shader_set(sh_bloom_lum);
 	GetMaskTransform();
-	show_debug_message(ubloomIntensity);
-	show_debug_message(usigma);
 	shader_set_uniform_f(ubloomIntensity,bloomIntensity);
 	shader_set_uniform_f(ubloomRange,bloomRange);
 	shader_set_uniform_f(ubloomTreshold,bloomTreshold);

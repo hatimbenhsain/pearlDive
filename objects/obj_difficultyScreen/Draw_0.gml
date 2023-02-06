@@ -8,16 +8,10 @@ if(active){
 	diffSliderY,diffSliderThickness);
 	draw_set_color(c_white);
 	draw_sprite(spr_note,0,diffX,diffSliderY);
-	
-	if(retryButtonActive){
-		draw_set_color(c_green);
-		draw_rectangle(retryButtonX-retryButtonW/2,retryButtonY-retryButtonH/2,
-		retryButtonX+retryButtonW/2,retryButtonY+retryButtonH/2,false)
-		draw_set_color(c_white);
-		draw_set_halign(fa_center);
-		draw_text(retryButtonX-10,retryButtonY,"retry");
-	}
+
 	
 	draw_set_color(c_white);
+	draw_set_font(font_pixellariMedium);
+	
 }
 

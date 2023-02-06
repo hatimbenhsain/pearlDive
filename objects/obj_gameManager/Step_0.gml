@@ -43,17 +43,17 @@ if(timeKeeper.playing && !settings.active){
 		if(m.time>=0.15){
 			m.image=0;	
 		}
-		//if(i!=currentInstrument-1){
-		//	if(m.noteIndex+1<array_length(midiTracks[i])){
-		//		var nextNote=midiTracks[i][m.noteIndex];
-		//		if(timeKeeper.songPosition>nextNote.time){
-		//			m.time=0;
-		//			m.image=1+(m.lastImg%(sprite_get_number(m.spr)-1));
-		//			m.lastImg=m.image;
-		//			m.noteIndex++;
-		//		}
-		//	}
-		//}
+		if(i!=currentInstrument-1){
+			if(m.noteIndex+1<array_length(midiTracks[i])){
+				var nextNote=midiTracks[i][m.noteIndex];
+				if(timeKeeper.songPosition>nextNote.time){
+					m.time=0;
+					m.image=1+(m.lastImg%(sprite_get_number(m.spr)-1));
+					m.lastImg=m.image;
+					m.noteIndex++;
+				}
+			}
+		}
 	})
 	
 	if(cooldown>0){
@@ -69,7 +69,6 @@ if(timeKeeper.playing && !settings.active){
 		}
 		noteIndex++;
 		nextNote=notes[|noteIndex];
-		show_debug_message(noteIndex);
 	}else if(noteIndex+1>=ds_list_size(notes) && nextNote!=-1 && nextNote.scored){
 		nextNote=-1;	
 	}
@@ -126,7 +125,6 @@ if(timeKeeper.playing && !settings.active){
 if(keyboard_check_pressed(vk_escape)){
 	settings.active=!settings.active;
 	if(settings.active){
-		show_debug_message("pause");
 		with(timeKeeper){
 			audio_pause_sound(track);
 			playing=false;
@@ -146,9 +144,11 @@ if(lastStartStage!=startStage){
 				with(obj_instrument){
 					instance_destroy(self);	
 				}
-				for(var i=0;i<instrumentNumber;i++){
-					var xx=54*(i+0.5-instrumentNumber/2)+room_width/2;
-					instance_create_depth(xx,room_height/2,depth-1.9,asset_get_index("obj_instrument"+string(i+1)));	
+				for(var i=0;i<array_length(songs[songIndex].instruments);i++){
+					var s=songs[songIndex]
+					var xx=54*(i+0.5-array_length(s.instruments)/2)+room_width/2;
+					instance_create_depth(xx,room_height/2,depth-1.9,
+					asset_get_index("obj_instrument"+string(instrumentMap[?s.instruments[i]])));	
 				}
 			}else{
 				with(obj_instrument){
@@ -156,6 +156,11 @@ if(lastStartStage!=startStage){
 					startx=x;
 					animTime=0;
 				}
+			}
+			break;
+		case "difficulty":
+			with(obj_difficultyScreen){
+				active=true;	
 			}
 			break;
 	}
@@ -171,6 +176,10 @@ if(lastStartStage!=startStage){
 				animTime=0;
 			}
 			break;
+		case "difficulty":
+			with(obj_difficultyScreen){
+				active=false;	
+			}
 	}
 	
 }

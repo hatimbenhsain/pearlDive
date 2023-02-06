@@ -29,6 +29,9 @@ function Start(){
 	with(obj_gameUI_back){
 		spotlightIndex=gameManager.currentInstrument-1;
 	}
+	with(obj_difficultyScreen){
+		active=false;	
+	}
 }
 
 function Stop(){
@@ -162,7 +165,6 @@ function ChangeState(s){
 				break;
 			case states.playing:
 				Start();
-				show_debug_message("start");
 				break;
 			case states.ended:
 				Stop();

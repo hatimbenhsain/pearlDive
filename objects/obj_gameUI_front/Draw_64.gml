@@ -84,12 +84,19 @@ if(gameManager.currentState==states.playing){
 			}
 			draw_set_font(font_pixellariMedium);
 			draw_text_ext(sc*(room_width/2-100),sc*75,song.description,sc*15,sc*200);
+			draw_set_halign(fa_right);
+			draw_text(sc*(room_width-10),sc*10,
+			"("+string(gameManager.songIndex+1)+"/"+string(array_length(gameManager.songs))+")");
 			break;
 		case "instrument":
 			draw_text(sc*room_width/2,30,"Choose an instrument:");
 			break;
 		case "difficulty":
-			
+			draw_text(sc*room_width/2,30,"Choose your difficulty setting:");
+			draw_set_halign(fa_right);
+			draw_text(sc*(room_width/2-125),sc*93,"Easy");
+			draw_set_halign(fa_left);
+			draw_text(sc*(room_width/2+125),sc*93,"Hard");
 			break;
 	}
 }

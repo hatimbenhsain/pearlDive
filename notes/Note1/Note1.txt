@@ -2,13 +2,17 @@ to do:
 / fix ended afterimage
 / fix showing wrong score at the end
 / make musicians follow other tracks
-+ add freestyle mode?
-+ expand menu: choose song, instrument, difficulty
+/ expand menu: choose song, instrument,
+/ score breakdown: perfect, good, great, misses
+/ expand menu: difficulty
 + show diff of instrument by stars?
 + implement sawt arabi
 + make clapper 2?
-+ score breakdown: perfect, good, great, misses
 + fix blur shader for html
++ go back to song select
++ rehaul settings (fix retry button, look less ugly)
 
++ improve UI at beginning
 + make another background?
 + add dancer?
++ add freestyle mode?
