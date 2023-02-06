@@ -9,16 +9,3 @@ if(playing){
 		lastBeat=lastBeat+crochet;
 	}
 }
-//		if(keyboard_check_pressed(ord("X"))){
-//			clicked=true;	
-//		}
-//		if(clicked)	subimg=2;
-//	}else if(songPosition>lastBeat && songPosition<=lastBeat+animLength){
-//		if(keyboard_check_pressed(ord("X"))){
-//			clicked=true;	
-//		}
-//		if(clicked)	subimg=2;
-//	}else{
-//		clicked=false;	
-
-//}else subimg=0;

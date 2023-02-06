@@ -30,7 +30,6 @@ if(scoredPrev!=scored){
 if(scoredPrev){
 	animationTime+=delta_time/1000000;
 	image_alpha=1-animcurve_channel_evaluate(channel3,(animationTime/animationLength));
-	show_debug_message(image_alpha);
 	x=startx+(targetx-startx)*animationTime/animationLength;
 	//x=startx+(targetx-startx)*animcurve_channel_evaluate(channel4,animationTime/animationLength);
 	y=starty+(targety-starty)*animcurve_channel_evaluate(channel2,(animationTime/animationLength));

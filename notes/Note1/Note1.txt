@@ -1,0 +1,5 @@
+to do:
+/ fix ended afterimage
+/ fix showing wrong score at the end
+/ make musicians follow other tracks
++ add freestyle mode?

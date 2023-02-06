@@ -1,5 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
+
+// Add the score
 if(scoreToAdd!=0){
 	lastScoreTime+=delta_time/1000000
 	if(currentState!=states.playing || lastScoreTime>=lastScoreLength){
@@ -8,11 +10,13 @@ if(scoreToAdd!=0){
 	}
 }
 
+// Find timekeeper 
 if(timeKeeper==noone){
 	timeKeeper=instance_find(obj_timeKeeper,0);
 	uiFront.timeKeeper=timeKeeper;
 	uiBack.timeKeeper=timeKeeper;
 }
+// Find settings
 if(settings==noone){
 	settings=instance_find(obj_settings,0);
 }
@@ -24,7 +28,7 @@ if(!settings.active){
 		}else if(playing && keyboard_check_pressed(vk_space)){
 			ChangeState(states.ended);
 		}else if(playing){
-			if(!audio_is_playing(snd_claps)){
+			if(!audio_is_playing(song)){
 				ChangeState(states.ended);
 			}
 		}
@@ -32,6 +36,26 @@ if(!settings.active){
 }
 
 if(timeKeeper.playing && !settings.active){
+	
+	//update musicians
+	array_foreach(musicians,function(m,i){
+		m.time+=delta_time/1000000;
+		if(m.time>=0.15){
+			m.image=0;	
+		}
+		//if(i!=currentInstrument-1){
+		//	if(m.noteIndex+1<array_length(midiTracks[i])){
+		//		var nextNote=midiTracks[i][m.noteIndex];
+		//		if(timeKeeper.songPosition>nextNote.time){
+		//			m.time=0;
+		//			m.image=1+(m.lastImg%(sprite_get_number(m.spr)-1));
+		//			m.lastImg=m.image;
+		//			m.noteIndex++;
+		//		}
+		//	}
+		//}
+	})
+	
 	if(cooldown>0){
 		cooldown-=timeKeeper.songPosition-lastSongPosition;	
 		cooldown=clamp(cooldown,0,penaltyTime);
@@ -42,10 +66,13 @@ if(timeKeeper.playing && !settings.active){
 	[array_length(timeWindows[difficultyLevel])-1]/2)){
 		noteIndex++;
 		nextNote=notes[|noteIndex];
+		show_debug_message(noteIndex);
+	}else if(noteIndex+1>=ds_list_size(notes) && nextNote!=-1 && nextNote.scored){
+		nextNote=-1;	
 	}
 	
 	
-	if(!nextNote.scored && (keyboard_check_pressed(buttons1[nextNote.button]) ||
+	if(nextNote!=-1 && !nextNote.scored && (keyboard_check_pressed(buttons1[nextNote.button]) ||
 	mouse_check_button_pressed(buttons2[nextNote.button]))){
 		var scored=false;
 		if(cooldown<=0){
@@ -64,11 +91,18 @@ if(timeKeeper.playing && !settings.active){
 				}
 			}
 			obj_gameUI_front.animTime=0;
+			
+			//Update player musician
+			var m=musicians[currentInstrument-1];
+			m.time=0;
+			m.image=1+(m.lastImg%(sprite_get_number(m.spr)-1));
+			m.lastImg=m.image;
+			
 		}
 		if(!scored){
 			cooldown=penaltyTime;
-			show_debug_message("cooldown");
 		}
+		
 		lastClick=timeKeeper.songPosition;
 	}
 	
@@ -88,4 +122,3 @@ if(keyboard_check_pressed(vk_escape)){
 		timeKeeper.playing=true;
 	}
 }
-

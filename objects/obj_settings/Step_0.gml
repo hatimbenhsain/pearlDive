@@ -30,10 +30,8 @@ if(active){
 		obj_gameManager.difficultyLevel=floor(diffSliderPosition*(array_length(obj_gameManager.timeWindows)-1));
 		if(prevDiffLevel!=obj_gameManager.difficultyLevel){
 			retryButtonActive=true;	
-			show_debug_message("active");
 		}else{
 			retryButtonActive=false;
-			show_debug_message("not active");
 		}
 	}
 }

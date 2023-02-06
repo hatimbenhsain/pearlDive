@@ -10,13 +10,18 @@ function CheckCollisionPoint(xx,yy,sx,sy,w,h){
 
 function Start(){
 	with(obj_gameManager){
-		currentState=states.playing;	
+		currentScore=0;	
+		currentState=states.playing;
+		timeKeeper.song=song;
 	}
 	with(obj_timeKeeper){
 		GenerateNotes();
 		playing=true;
-		audio_stop_sound(snd_claps);
-		track=audio_play_sound(snd_claps,1,false);	
+		audio_stop_sound(song);
+		track=audio_play_sound(song,1,false);	
+	}
+	with(obj_gameUI_back){
+		spotlightIndex=gameManager.currentInstrument-1;
 	}
 }
 
@@ -30,9 +35,9 @@ function Stop(){
 		playing=false;
 		ResetNotes();
 	}
-	with(obj_gameManager){
-		currentScore=0;	
-	}
+	//with(obj_gameManager){
+	//	currentScore=0;	
+	//}
 }
 
 function Retry(){
@@ -45,7 +50,6 @@ function Retry(){
 
 function GenerateNotes(){
 	with(obj_gameManager){
-		
 		ds_list_destroy(notes);
 		notes=ds_list_create();
 		//for(var i=0;i<200;i++){
@@ -55,8 +59,9 @@ function GenerateNotes(){
 		//	n.scored=false;
 		//	ds_list_add(notes,n);
 		//}
-		for(var i=0;i<array_length(midiNotes);i++){
-			var n=midiNotes[i];
+		var t=midiTracks[(currentInstrument-1)%array_length(midiTracks)];
+		for(var i=0;i<array_length(t);i++){
+			var n=t[i];
 			var note=instance_create_depth(0,0,depth-1,obj_note);
 			note.time=n.time;
 			if(n.midi==36){
@@ -64,7 +69,6 @@ function GenerateNotes(){
 			}else{
 				note.button=1;	
 			}
-			show_debug_message(note.time);
 			ds_list_add(notes,note);
 		}
 		noteIndex=0;
@@ -93,17 +97,23 @@ function ParseMidi(fileName){
 	//return midiNotes;
 	var json=OpenJson(fileName);
 	var tracks=json.tracks;
-	var track=tracks[0];
-	var midiNotes=track.notes;
+	var midiTracks=[];
+	for(var i=0;i<array_length(tracks);i++){
+		var track=tracks[i];
+		if(array_length(track.notes)>0){
+			array_push(midiTracks,track.notes);
+		}
+	}
+	//var midiNotes=track.notes;
 	
 	var header=json.header;
-	var tempos=header.tempos;
+	var tempos=json.tempo;
 	var tempo=tempos[0];
 	var bpm=tempo.bpm
 	obj_timeKeeper.bpm=bpm;
 	obj_timeKeeper.crochet=60/bpm
 	
-	return midiNotes;
+	return midiTracks;
 }
 
 function OpenFile(dir){

@@ -5,5 +5,5 @@
 event_inherited();
 number=4;
 
-name="Tabel";
-description="A large two-headed cylindrical drum made out of wood and goatskin.";
+name="Yahala";
+description="A clay pot, originally used to store water, that the band uses because of the extremely deep doom sound.";
