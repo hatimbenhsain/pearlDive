@@ -30,7 +30,10 @@ penaltyTime=obj_tuner.penaltyTime;
 lastSongPosition=0;
 lastClick=0;
 
-midiTracks=ParseMidi("music3.txt");
+midiMap=ds_map_create();
+midiMap[?"music2.txt"]=ParseMidi("music3.txt");
+midiMap[?"music3.txt"]=ParseMidi("music3.txt");
+midiTracks=-1;
 
 uiFront=instance_create_depth(x,y,depth-2,obj_gameUI_front);
 uiBack=instance_create_depth(x,y,depth,obj_gameUI_back);
@@ -38,6 +41,7 @@ uiBack.gameManager=self;
 uiFront.gameManager=self;
 
 currentInstrument=-1;
+currentInstrumentObj=-1;
 instrumentNumber=6;
 
 enum states {
@@ -47,8 +51,7 @@ enum states {
 	ended
 }
 
-song=snd_backingTrack1;
-
+tracks=[snd_backingTrack1];
 
 screenScale=display_get_gui_width()/room_width;
 
@@ -102,13 +105,17 @@ songs=[
 	name:"Test Song",
 	description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
 	instruments:["merwas","hawan","tabel","yahala","tar","hands"],
-	difficulty:3
+	difficulty:3,
+	tracks:[snd_backingTrack1,snd_backingTrack2,snd_backingTrack1,snd_backingTrack2,snd_backingTrack1,snd_backingTrack2],
+	midiMap:"music3.txt"
 },
 {
 	name:"Sawt Arabi",
 	description:"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 	instruments:["hands","merwas"],
-	difficulty:1
+	difficulty:1,
+	tracks:[snd_backingTrack1,snd_backingTrack2],
+	midiMap:"music2.txt"
 }
 ]
 

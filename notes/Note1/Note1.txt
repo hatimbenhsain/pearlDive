@@ -11,7 +11,12 @@ to do:
 + make clapper 2?
 
 + implement sawt arabi
-+ change song based on choice
++ change song based on choice:
+	/ change audio play sound/audio stop to for loops
+	/ track the first track
+	/ have several tracks for each song
+	/ choose which tracks (all but current instrument) to play
+	+ have midi tracks per song and use the correct one
 + have an indication of time of song left
 
 + improve UI at beginning

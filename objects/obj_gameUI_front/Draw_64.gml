@@ -6,7 +6,7 @@ var sc=gameManager.screenScale;
 
 if(tk.playing){
 	draw_sprite_ext(spr_basket_outside,0,notesX*sc,notesY*sc,sc,sc,0,c_white,1);
-	var instrument=asset_get_index("obj_instrument"+string(gameManager.currentInstrument))
+	var instrument=asset_get_index("obj_instrument"+string(gameManager.currentInstrument));
 	draw_sprite_ext(instrument.sprite_index,0,(notesX-46)*sc,notesY*sc,
 	instrumScale*sc,instrumScale*sc,0,c_white,1);
 	draw_set_color(c_black);

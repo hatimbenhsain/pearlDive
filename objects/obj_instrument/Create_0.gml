@@ -26,3 +26,7 @@ channel=animcurve_get_channel(curve,"curve1");
 
 animLength=0.5;
 animTime=0;
+
+dumSample=snd_drum1;
+takSample=snd_drum2;
+

@@ -75,6 +75,7 @@
     {"name":"sh_blur2","order":4,"path":"shaders/sh_blur2/sh_blur2.yy",},
     {"name":"spr_instrument3","order":3,"path":"sprites/spr_instrument3/spr_instrument3.yy",},
     {"name":"spr_basket_inside","order":4,"path":"sprites/spr_basket_inside/spr_basket_inside.yy",},
+    {"name":"snd_backingTrack2","order":5,"path":"sounds/snd_backingTrack2/snd_backingTrack2.yy",},
     {"name":"obj_difficultyScreen","order":17,"path":"objects/obj_difficultyScreen/obj_difficultyScreen.yy",},
     {"name":"spr_instrument6","order":6,"path":"sprites/spr_instrument6/spr_instrument6.yy",},
     {"name":"spr_musician6","order":5,"path":"sprites/spr_musician6/spr_musician6.yy",},

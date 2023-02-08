@@ -15,3 +15,6 @@ track=-1;
 animLength=0.2;
 
 clicked=false;
+
+tracks=[-1]
+audios=[-1];

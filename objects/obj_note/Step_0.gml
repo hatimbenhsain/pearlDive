@@ -16,9 +16,9 @@ if(timeKeeper.playing && !scoredPrev){
 if(scoredPrev!=scored){
 	alarm[0]=room_speed*disappearingTime;
 	if(button=0){
-		audio_play_sound(snd_drum1,1,false);
+		audio_play_sound(dumSample,1,false);
 	}else{
-		audio_play_sound(snd_drum2,1,false);
+		audio_play_sound(takSample,1,false);
 	}
 	targetx=room_width-24;
 	targety=24;

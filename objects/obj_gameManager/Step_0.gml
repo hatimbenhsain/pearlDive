@@ -28,7 +28,7 @@ if(!settings.active){
 		}else if(playing && keyboard_check_pressed(vk_space)){
 			ChangeState(states.ended);
 		}else if(playing){
-			if(!audio_is_playing(song)){
+			if(!audio_is_playing(audios[0])){
 				ChangeState(states.ended);
 			}
 		}
@@ -127,12 +127,10 @@ if(keyboard_check_pressed(vk_escape)){
 		settings.active=!settings.active;
 		if(settings.active){
 			with(timeKeeper){
-				audio_pause_sound(track);
-				playing=false;
+				PauseMusic();
 			}
 		}else{
-			audio_resume_sound(timeKeeper.track);	
-			timeKeeper.playing=true;
+			ResumeMusic();
 		}
 	}
 }

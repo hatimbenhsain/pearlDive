@@ -18,16 +18,34 @@ function Start(){
 			miss:0
 		}
 		currentState=states.playing;
-		timeKeeper.song=song;
-	}
-	with(obj_timeKeeper){
+		tracks=songs[songIndex].tracks;
+		timeKeeper.audios=[];
+
+		// find track to not play (same as current instrument)
+		currentInstrumentObj=asset_get_index("obj_instrument"+string(currentInstrument));
+		var k=array_get_index(songs[songIndex].instruments,string_lower(currentInstrumentObj.name));
+		var trackToExclude=songs[songIndex].tracks[k];
+		
+		for(var i=0;i<array_length(tracks);i++){
+			if(tracks[i]!=trackToExclude && array_get_index(timeKeeper.audios,tracks[i])==-1){
+				array_push(timeKeeper.audios,tracks[i]);
+			}
+		}
+		
 		with(obj_note){
 			instance_destroy(self);	
 		}
+		midiTracks=midiMap[?songs[songIndex].midiMap];
 		GenerateNotes();
+		
+	}
+	with(obj_timeKeeper){
+		
 		playing=true;
-		audio_stop_sound(song);
-		track=audio_play_sound(song,1,false);	
+		for(var i=0;i<array_length(audios);i++){
+			audio_stop_sound(audios[i]);
+			tracks[i]=audio_play_sound(audios[i],1,false);	
+		}
 	}
 	with(obj_gameUI_back){
 		spotlightIndex=gameManager.currentInstrument-1;
@@ -42,14 +60,32 @@ function Stop(){
 		currentState=states.ended;	
 	}
 	with(obj_timeKeeper){
-		audio_stop_sound(track);
+		for(var i=0;i<array_length(tracks);i++){
+			audio_stop_sound(tracks[i]);
+		}
 		lastBeat=0;
 		playing=false;
 		ResetNotes();
 	}
-	//with(obj_gameManager){
-	//	currentScore=0;	
-	//}
+
+}
+
+function PauseMusic(){
+	with(obj_timeKeeper){
+		for(var i=0;i<array_length(tracks);i++){
+			audio_pause_sound(tracks[i]);
+		}
+		playing=false;
+	}
+}
+
+function ResumeMusic(){
+	with(obj_timeKeeper){
+		for(var i=0;i<array_length(tracks);i++){
+			audio_resume_sound(tracks[i]);
+		}
+		timeKeeper.playing=true;	
+	}
 }
 
 function Retry(){
@@ -81,6 +117,8 @@ function GenerateNotes(){
 			}else{
 				note.button=1;	
 			}
+			note.dumSample=currentInstrumentObj.dumSample;
+			note.takSample=currentInstrumentObj.takSample;
 			ds_list_add(notes,note);
 		}
 		noteIndex=0;
