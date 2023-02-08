@@ -123,21 +123,24 @@ if(timeKeeper.playing && !settings.active){
 }
 
 if(keyboard_check_pressed(vk_escape)){
-	settings.active=!settings.active;
-	if(settings.active){
-		with(timeKeeper){
-			audio_pause_sound(track);
-			playing=false;
+	if(currentState==states.playing){
+		settings.active=!settings.active;
+		if(settings.active){
+			with(timeKeeper){
+				audio_pause_sound(track);
+				playing=false;
+			}
+		}else{
+			audio_resume_sound(timeKeeper.track);	
+			timeKeeper.playing=true;
 		}
-	}else{
-		audio_resume_sound(timeKeeper.track);	
-		timeKeeper.playing=true;
 	}
 }
 
 if(lastStartStage!=startStage){
 	switch(startStages[startStage]){
 		case "song":
+			currentInstrument=-1;
 			break;
 		case "instrument" :
 			if(lastStartStage<startStage){

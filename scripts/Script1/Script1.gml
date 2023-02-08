@@ -21,6 +21,9 @@ function Start(){
 		timeKeeper.song=song;
 	}
 	with(obj_timeKeeper){
+		with(obj_note){
+			instance_destroy(self);	
+		}
 		GenerateNotes();
 		playing=true;
 		audio_stop_sound(song);

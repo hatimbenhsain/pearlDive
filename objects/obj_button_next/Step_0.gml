@@ -1,8 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+var stage=gameManager.startStages[gameManager.startStage];
 
-if(gameManager.currentState==states.start  && gameManager.startStage<array_length(gameManager.startStages)-1){
+if(gameManager.currentState==states.start  && gameManager.startStage<array_length(gameManager.startStages)-1
+&& (stage!="instrument" || gameManager.currentInstrument!=-1)){
 	active=true;	
 }else{
 	active=false;	

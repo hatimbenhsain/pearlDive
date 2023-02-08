@@ -5,14 +5,17 @@ to do:
 / expand menu: choose song, instrument,
 / score breakdown: perfect, good, great, misses
 / expand menu: difficulty
+/ rehaul settings (fix retry button, look less ugly)
+/ go back to song select (or retry)
 + show diff of instrument by stars?
-+ implement sawt arabi
 + make clapper 2?
-+ fix blur shader for html
-+ go back to song select
-+ rehaul settings (fix retry button, look less ugly)
+
++ implement sawt arabi
++ change song based on choice
++ have an indication of time of song left
 
 + improve UI at beginning
 + make another background?
 + add dancer?
 + add freestyle mode?
++ fix blur shader for html

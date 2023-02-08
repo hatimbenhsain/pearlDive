@@ -11,7 +11,8 @@ var tk=gameManager.timeKeeper
 
 draw_sprite(spr_diwaniya,0,diwaniyaX,diwaniyaY);
 
-if(gameManager.currentState==states.start || gameManager.currentState==states.ended){
+if(gameManager.currentState==states.start || gameManager.currentState==states.ended ||
+gameManager.settings.active){
 	draw_set_color(c_black);
 	draw_set_alpha(0.6);
 	draw_rectangle(0,0,room_width,room_height,false);
