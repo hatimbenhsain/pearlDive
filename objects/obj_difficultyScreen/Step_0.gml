@@ -5,7 +5,7 @@ if(prevActive!=active){
 	prevDiffLevel=obj_gameManager.difficultyLevel;
 }
 
-if(active){
+if(active && gameManager.info.active==false){
 	if(mouse_check_button_pressed(mb_left)){
 		if(CheckCollisionPoint(mouse_x,mouse_y,diffX,diffSliderY,
 		sprite_get_bbox_right(spr_note)-sprite_get_bbox_left(spr_note),

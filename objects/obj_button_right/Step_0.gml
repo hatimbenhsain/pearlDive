@@ -2,7 +2,8 @@
 // You can write your code in this editor
 
 
-if(gameManager.currentState==states.start  && gameManager.startStages[gameManager.startStage]=="song"){
+if(gameManager.currentState==states.start  && gameManager.startStages[gameManager.startStage]=="song"
+&& !gameManager.info.active){
 	active=true;	
 }else{
 	active=false;	

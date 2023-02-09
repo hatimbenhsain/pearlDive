@@ -13,7 +13,7 @@ if(animTime<animLength){
 }
 	
 
-if(gameManager.currentState==states.start && x==targetx){
+if(gameManager.currentState==states.start && gameManager.info.active==false && x==targetx){
 	
 	if(position_meeting(mouse_x,mouse_y,self)){
 		if(!hovered){

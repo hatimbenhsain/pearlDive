@@ -10,16 +10,6 @@ if(scoreToAdd!=0){
 	}
 }
 
-// Find timekeeper 
-if(timeKeeper==noone){
-	timeKeeper=instance_find(obj_timeKeeper,0);
-	uiFront.timeKeeper=timeKeeper;
-	uiBack.timeKeeper=timeKeeper;
-}
-// Find settings
-if(settings==noone){
-	settings=instance_find(obj_settings,0);
-}
 
 if(!settings.active){
 	with(timeKeeper){

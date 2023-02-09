@@ -4,7 +4,7 @@
 var stage=gameManager.startStages[gameManager.startStage];
 
 if(gameManager.currentState==states.start  && gameManager.startStage<array_length(gameManager.startStages)-1
-&& (stage!="instrument" || gameManager.currentInstrument!=-1)){
+&& (stage!="instrument" || gameManager.currentInstrument!=-1) && !gameManager.info.active){
 	active=true;	
 }else{
 	active=false;	

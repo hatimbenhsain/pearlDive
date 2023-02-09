@@ -10,17 +10,15 @@ to do:
 / change song based on choice
 / fix spotlight after effect after finishing song/changing musicians
 / backup musicians dont sink up anymore?
+/ add options in the settings:
+/ implement sawt arabi
+/ have an indication of time of song left
 + show diff of instrument by stars?
 + make clapper 2?
 + ask ghazi about dynamics (velocity)
-+ add options in the settings:
-	+ remove spotlight
-	+ remove bottom handclaps ?
 + add info window with about and explanation of pearls and dum/tak
++ fix resume button
 
-
-/ implement sawt arabi
-+ have an indication of time of song left
 
 + improve UI at beginning
 + make another background?

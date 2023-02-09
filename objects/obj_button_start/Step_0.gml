@@ -2,7 +2,8 @@
 // You can write your code in this editor
 
 
-if(gameManager.currentState==states.start && gameManager.startStage=array_length(gameManager.startStages)-1){
+if(gameManager.currentState==states.start && gameManager.startStage=array_length(gameManager.startStages)-1
+&& gameManager.info.active==false){
 	active=true;	
 }else{
 	active=false;	

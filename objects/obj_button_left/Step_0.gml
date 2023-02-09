@@ -1,8 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-
-if(gameManager.currentState==states.start  && gameManager.startStages[gameManager.startStage]=="song"){
+show_debug_message(depth);
+show_debug_message(gameManager.depth);
+if(gameManager.currentState==states.start  && gameManager.startStages[gameManager.startStage]=="song"
+&& gameManager.info.active==false){
 	active=true;	
 }else{
 	active=false;	

@@ -2,6 +2,7 @@
 // You can write your code in this editor
 timeKeeper=noone;
 settings=noone;
+info=noone;
 
 timeWindows=obj_tuner.timeWindows;
 scores=obj_tuner.scores;

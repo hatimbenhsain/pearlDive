@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "obj_buttons",
+    "path": "folders/Objects/obj_buttons.yy",
   },
   "parentObjectId": {
     "name": "obj_button",

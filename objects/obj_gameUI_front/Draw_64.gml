@@ -64,40 +64,42 @@ if(gameManager.currentState==states.playing){
 }else if(gameManager.currentState=states.start){
 	draw_set_font(font_pixellariBig);
 	draw_set_halign(fa_center);
-	switch(gameManager.startStages[gameManager.startStage]){
-		case "song":
-			var song=gameManager.songs[gameManager.songIndex];
-			draw_text(sc*room_width/2,30,"Choose a song:");
-			draw_set_color(c_white);
-			draw_set_halign(fa_left);
-			draw_text_ext(sc*(room_width-200)/2,sc*50,song.name,sc*5,sc*200);
-			for(var i=0;i<3;i++){
-				var image=1;
-				if(song.difficulty<=i) image=0;
-				draw_sprite_ext(spr_star,image,sc*(room_width/2+100-(3-i)*18),sc*55,sc,sc,0,c_white,image_alpha);
-			}
-			for(var i=0;i<array_length(song.instruments);i++){
-				spr=asset_get_index("spr_instrument"+string(gameManager.instrumentMap[?song.instruments[i]]));	
-				var xx=20*(i+0.5-array_length(song.instruments)/2)+room_width/2;
-				var xx=room_width/2+100-(array_length(song.instruments)-i)*20;
-				draw_sprite_ext(spr,0,xx*sc,sc*(room_height-30),sc/3,sc/3,0,c_white,image_alpha);
-			}
-			draw_set_font(font_pixellariMedium);
-			draw_text_ext(sc*(room_width/2-100),sc*75,song.description,sc*15,sc*200);
-			draw_set_halign(fa_right);
-			draw_text(sc*(room_width-10),sc*10,
-			"("+string(gameManager.songIndex+1)+"/"+string(array_length(gameManager.songs))+")");
-			break;
-		case "instrument":
-			draw_text(sc*room_width/2,30,"Choose an instrument:");
-			break;
-		case "difficulty":
-			draw_text(sc*room_width/2,30,"Choose your difficulty setting:");
-			draw_set_halign(fa_right);
-			draw_text(sc*(room_width/2-125),sc*93,"Easy");
-			draw_set_halign(fa_left);
-			draw_text(sc*(room_width/2+125),sc*93,"Hard");
-			break;
+	if(!gameManager.info.active){
+		switch(gameManager.startStages[gameManager.startStage]){
+			case "song":
+				var song=gameManager.songs[gameManager.songIndex];
+				draw_text(sc*room_width/2,30,"Choose a song:");
+				draw_set_color(c_white);
+				draw_set_halign(fa_left);
+				draw_text_ext(sc*(room_width-200)/2,sc*50,song.name,sc*5,sc*200);
+				for(var i=0;i<3;i++){
+					var image=1;
+					if(song.difficulty<=i) image=0;
+					draw_sprite_ext(spr_star,image,sc*(room_width/2+100-(3-i)*18),sc*55,sc,sc,0,c_white,image_alpha);
+				}
+				for(var i=0;i<array_length(song.instruments);i++){
+					spr=asset_get_index("spr_instrument"+string(gameManager.instrumentMap[?song.instruments[i]]));	
+					var xx=20*(i+0.5-array_length(song.instruments)/2)+room_width/2;
+					var xx=room_width/2+100-(array_length(song.instruments)-i)*20;
+					draw_sprite_ext(spr,0,xx*sc,sc*(room_height-30),sc/3,sc/3,0,c_white,image_alpha);
+				}
+				draw_set_font(font_pixellariMedium);
+				draw_text_ext(sc*(room_width/2-100),sc*75,song.description,sc*15,sc*200);
+				draw_set_halign(fa_right);
+				draw_text(sc*(room_width-10),sc*10,
+				"("+string(gameManager.songIndex+1)+"/"+string(array_length(gameManager.songs))+")");
+				break;
+			case "instrument":
+				draw_text(sc*room_width/2,30,"Choose an instrument:");
+				break;
+			case "difficulty":
+				draw_text(sc*room_width/2,30,"Choose your difficulty setting:");
+				draw_set_halign(fa_right);
+				draw_text(sc*(room_width/2-125),sc*93,"Easy");
+				draw_set_halign(fa_left);
+				draw_text(sc*(room_width/2+125),sc*93,"Hard");
+				break;
+		}
 	}
 }
 

@@ -16,5 +16,5 @@ prevActive=active //active before the beginning of frame?
 
 mouseOffsetX=0;		//mouse x offset from currently dragged element
 
-
+gameManager=instance_find(obj_gameManager,0)
 
