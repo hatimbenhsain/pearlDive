@@ -3,6 +3,7 @@
 
 
 songPosition=audio_sound_get_track_position(tracks[0]);
+songLength=audio_sound_length(tracks[0]);
 
 if(playing){
 	if(songPosition>lastBeat+crochet){

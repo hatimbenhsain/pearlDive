@@ -69,3 +69,5 @@ srf_pong=-1;
 application_surface_draw_enable(false);
 
 prevSpotlightIndex=spotlightIndex;
+
+songlengthBar=true;

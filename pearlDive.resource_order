@@ -75,6 +75,7 @@
     {"name":"spr_musicBar","order":15,"path":"sprites/spr_musicBar/spr_musicBar.yy",},
     {"name":"spr_button_retry","order":23,"path":"sprites/spr_button_retry/spr_button_retry.yy",},
     {"name":"obj_instrument6","order":6,"path":"objects/obj_instrument6/obj_instrument6.yy",},
+    {"name":"obj_button_checkMark","order":24,"path":"objects/obj_button_checkMark/obj_button_checkMark.yy",},
     {"name":"sh_blur2","order":4,"path":"shaders/sh_blur2/sh_blur2.yy",},
     {"name":"spr_instrument3","order":3,"path":"sprites/spr_instrument3/spr_instrument3.yy",},
     {"name":"spr_basket_inside","order":4,"path":"sprites/spr_basket_inside/spr_basket_inside.yy",},
@@ -89,6 +90,8 @@
     {"name":"spr_beat","order":7,"path":"sprites/spr_beat/spr_beat.yy",},
     {"name":"spr_instrument2","order":1,"path":"sprites/spr_instrument2/spr_instrument2.yy",},
     {"name":"spr_hands3","order":2,"path":"sprites/spr_hands3/spr_hands3.yy",},
+    {"name":"obj_button_checkMark_songLength","order":26,"path":"objects/obj_button_checkMark_songLength/obj_button_checkMark_songLength.yy",},
+    {"name":"spr_checkMark","order":24,"path":"sprites/spr_checkMark/spr_checkMark.yy",},
     {"name":"spr_star","order":19,"path":"sprites/spr_star/spr_star.yy",},
     {"name":"snd_drum1","order":2,"path":"sounds/snd_drum1/snd_drum1.yy",},
     {"name":"spr_musician5","order":6,"path":"sprites/spr_musician5/spr_musician5.yy",},
@@ -98,5 +101,6 @@
     {"name":"spr_instruments","order":5,"path":"sprites/spr_instruments/spr_instruments.yy",},
     {"name":"obj_button_next","order":14,"path":"objects/obj_button_next/obj_button_next.yy",},
     {"name":"sh_bloom_lum","order":1,"path":"shaders/sh_bloom_lum/sh_bloom_lum.yy",},
+    {"name":"obj_button_checkMark_spotlight","order":25,"path":"objects/obj_button_checkMark_spotlight/obj_button_checkMark_spotlight.yy",},
   ],
 }

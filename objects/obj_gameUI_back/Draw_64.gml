@@ -22,4 +22,10 @@ if(tk.playing){
 		}
 	}
 	draw_sprite_ext(spr_basket_inside,0,notesX*sc,notesY*sc,sc,sc,0,c_white,1);
+	if(songlengthBar){
+		draw_set_color(c_gray);
+		var x2=guiW*gameManager.timeKeeper.songPosition/gameManager.timeKeeper.songLength;
+		draw_rectangle(0,guiH-sc*5,x2,guiH,false);
+		draw_set_color(c_white);
+	}
 }
