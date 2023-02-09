@@ -30,10 +30,7 @@ penaltyTime=obj_tuner.penaltyTime;
 lastSongPosition=0;
 lastClick=0;
 
-midiMap=ds_map_create();
-midiMap[?"music2.txt"]=ParseMidi("music3.txt");
-midiMap[?"music3.txt"]=ParseMidi("music3.txt");
-midiTracks=-1;
+
 
 uiFront=instance_create_depth(x,y,depth-2,obj_gameUI_front);
 uiBack=instance_create_depth(x,y,depth,obj_gameUI_back);
@@ -107,17 +104,28 @@ songs=[
 	instruments:["merwas","hawan","tabel","yahala","tar","hands"],
 	difficulty:3,
 	tracks:[snd_backingTrack1,snd_backingTrack2,snd_backingTrack1,snd_backingTrack2,snd_backingTrack1,snd_backingTrack2],
-	midiMap:"music3.txt"
+	midiMap:"music3.txt",
+	bpm:166
 },
 {
 	name:"Sawt Arabi",
 	description:"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 	instruments:["hands","merwas"],
 	difficulty:1,
-	tracks:[snd_backingTrack1,snd_backingTrack2],
-	midiMap:"music2.txt"
+	tracks:[snd_sawtArabi_claps1,snd_sawtArabi_merwas],
+	midiMap:"sawtArabi1.txt",
+	bpm:124
 }
 ]
+
+midiMap=ds_map_create();
+for(var i=0;i<array_length(songs);i++){
+	var t=songs[i].midiMap;
+	midiMap[?t]=ParseMidi(t,songs[i]);
+	
+}
+midiTracks=-1;
+
 
 instrumentMap=ds_map_create();
 instrumentMap[?"merwas"]=1;

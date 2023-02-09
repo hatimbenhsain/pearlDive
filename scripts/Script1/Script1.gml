@@ -38,6 +38,9 @@ function Start(){
 		midiTracks=midiMap[?songs[songIndex].midiMap];
 		GenerateNotes();
 		
+		timeKeeper.bpm=songs[songIndex].bpm;
+		timeKeeper.crochet=60/timeKeeper.bpm;
+
 	}
 	with(obj_timeKeeper){
 		
@@ -137,7 +140,7 @@ function ResetNotes(){
 	}
 }
 
-function ParseMidi(fileName){
+function ParseMidi(fileName,song=-1){
 	//var arr=OpenFile(fileName);
 	//var map=json_decode(json_stringify(arr));
 	//map=map[?"default"]
@@ -150,18 +153,24 @@ function ParseMidi(fileName){
 	var midiTracks=[];
 	for(var i=0;i<array_length(tracks);i++){
 		var track=tracks[i];
-		if(array_length(track.notes)>0){
-			array_push(midiTracks,track.notes);
-		}
+		//if(array_length(track.notes)>0){
+		array_push(midiTracks,track.notes);
+		//}
 	}
 	//var midiNotes=track.notes;
 	
 	var header=json.header;
 	var tempos=json.tempo;
 	var tempo=tempos[0];
-	var bpm=tempo.bpm
+	var bpm=tempo.bpm;
+	
 	obj_timeKeeper.bpm=bpm;
-	obj_timeKeeper.crochet=60/bpm
+	obj_timeKeeper.crochet=60/bpm;
+	
+	if(song!=-1){
+		song.bpm=bpm;
+		song.crochet=60/bpm;
+	}
 	
 	return midiTracks;
 }

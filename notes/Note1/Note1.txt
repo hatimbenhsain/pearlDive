@@ -7,16 +7,18 @@ to do:
 / expand menu: difficulty
 / rehaul settings (fix retry button, look less ugly)
 / go back to song select (or retry)
+/ change song based on choice
 + show diff of instrument by stars?
 + make clapper 2?
++ ask ghazi about dynamics (velocity)
++ add options in the settings:
+	+ remove spotlight
+	+ remove bottom handclaps ?
++ add info window with about and explanation of pearls and dum/tak
++ fix spotlight after effect after finishing song/changing musicians
++ backup musicians dont sink up anymore?
 
-+ implement sawt arabi
-+ change song based on choice:
-	/ change audio play sound/audio stop to for loops
-	/ track the first track
-	/ have several tracks for each song
-	/ choose which tracks (all but current instrument) to play
-	+ have midi tracks per song and use the correct one
+/ implement sawt arabi
 + have an indication of time of song left
 
 + improve UI at beginning

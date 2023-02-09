@@ -29,14 +29,6 @@
   "duration": 18.14760125,
   "tracks": [
     {
-      "startTime": 0,
-      "duration": 0,
-      "length": 0,
-      "notes": [],
-      "controlChanges": {},
-      "id": 0
-    },
-    {
       "startTime": 1.445784,
       "duration": 17.575311749999997,
       "length": 12,

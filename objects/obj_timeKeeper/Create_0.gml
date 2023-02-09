@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-crochetsPerBar=4;
+crochetsPerBar=6;
 bpm=120;
 crochet=60/bpm;	//how long a beat lasts
 songPosition=-1;
