@@ -40,6 +40,10 @@ function Start(){
 		
 		timeKeeper.bpm=songs[songIndex].bpm;
 		timeKeeper.crochet=60/timeKeeper.bpm;
+		
+		array_foreach(musicians,function(m,i){
+			m.noteIndex=0;	
+		});
 
 	}
 	with(obj_timeKeeper){
@@ -49,6 +53,7 @@ function Start(){
 			audio_stop_sound(audios[i]);
 			tracks[i]=audio_play_sound(audios[i],1,false);	
 		}
+		lastBeat=0;
 	}
 	with(obj_gameUI_back){
 		spotlightIndex=gameManager.currentInstrument-1;
@@ -87,7 +92,7 @@ function ResumeMusic(){
 		for(var i=0;i<array_length(tracks);i++){
 			audio_resume_sound(tracks[i]);
 		}
-		timeKeeper.playing=true;	
+		playing=true;	
 	}
 }
 

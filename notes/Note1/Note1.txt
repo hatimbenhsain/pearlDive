@@ -8,6 +8,8 @@ to do:
 / rehaul settings (fix retry button, look less ugly)
 / go back to song select (or retry)
 / change song based on choice
+/ fix spotlight after effect after finishing song/changing musicians
+/ backup musicians dont sink up anymore?
 + show diff of instrument by stars?
 + make clapper 2?
 + ask ghazi about dynamics (velocity)
@@ -15,8 +17,7 @@ to do:
 	+ remove spotlight
 	+ remove bottom handclaps ?
 + add info window with about and explanation of pearls and dum/tak
-+ fix spotlight after effect after finishing song/changing musicians
-+ backup musicians dont sink up anymore?
+
 
 / implement sawt arabi
 + have an indication of time of song left

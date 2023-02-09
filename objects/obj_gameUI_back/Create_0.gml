@@ -46,7 +46,7 @@ GetMaskTransform=function(){
 
 spotlight=true;
 spotlightIndex=5;
-spotlightAlpha=0.4;
+spotlightAlpha=0.3;
 
 bloomTexture=-1;
 bloomDarken=1;
@@ -68,3 +68,4 @@ srf_pong=-1;
 
 application_surface_draw_enable(false);
 
+prevSpotlightIndex=spotlightIndex;

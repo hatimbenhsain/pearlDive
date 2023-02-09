@@ -8,12 +8,12 @@ if(!surface_exists(srf_ping)){
 }
 if(!surface_exists(srf_pong)){
 	srf_pong=surface_create(guiW,guiH);	
-	bloomTexture=surface_get_texture(srf_pong);
+	//bloomTexture=surface_get_texture(srf_pong);
 }
 
 
 
-if(gameManager.currentState==states.playing && spotlight){
+if(gameManager.currentState==states.playing && !gameManager.settings.active && spotlight){
 	
 	shader_set(sh_bloom_lum);
 	GetMaskTransform();
@@ -23,6 +23,9 @@ if(gameManager.currentState==states.playing && spotlight){
 	shader_set_uniform_f_array(umaskTransform,maskTransform);
 	texture_set_stage(umaskTexture,maskTexture);
 	surface_set_target(srf_ping);
+	if(spotlightIndex!=prevSpotlightIndex){
+		draw_clear_alpha(c_white, 0);
+	}
 	draw_surface(application_surface,0,0);
 	surface_reset_target();
 
@@ -34,6 +37,9 @@ if(gameManager.currentState==states.playing && spotlight){
 	shader_set_uniform_f(usigma,sigma);
 	shader_set_uniform_f(ublurVector,1,0);
 	surface_set_target(srf_pong);
+	if(spotlightIndex!=prevSpotlightIndex){
+		draw_clear_alpha(c_white, 0);
+	}
 	draw_surface(srf_ping,0,0);
 	shader_set_uniform_f(ublurVector,0,1);
 	surface_reset_target();
@@ -60,4 +66,6 @@ if(gameManager.currentState==states.playing && spotlight){
 //texture_set_stage(ubloomTexture,bloomTexture);
 //draw_surface_stretched(application_surface,0,0,guiW,guiH);
 //shader_reset();
+
+prevSpotlightIndex=spotlightIndex;
 
