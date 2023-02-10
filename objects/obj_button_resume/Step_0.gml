@@ -5,8 +5,7 @@
 if(active && selected){
 	obj_settings.active=false;
 	with(obj_gameManager){
-		audio_resume_sound(timeKeeper.track);	
-		timeKeeper.playing=true;	
+		ResumeMusic();
 	}
 }
 

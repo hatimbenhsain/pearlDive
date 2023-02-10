@@ -13,11 +13,15 @@ to do:
 / add options in the settings:
 / implement sawt arabi
 / have an indication of time of song left
+/ fix resume button
+/ change buttons to d and t
+/ change diff sprite
 + show diff of instrument by stars?
 + make clapper 2?
 + ask ghazi about dynamics (velocity)
 + add info window with about and explanation of pearls and dum/tak
-+ fix resume button
++ change controls to be like u have to maintain a button for dum (like irl)
+
 
 
 + improve UI at beginning

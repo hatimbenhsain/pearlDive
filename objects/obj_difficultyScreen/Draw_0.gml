@@ -7,7 +7,7 @@ if(active && gameManager.info.active==false){
 	draw_line_width(diffSliderX-diffSliderLength/2,diffSliderY,diffSliderX+diffSliderLength/2,
 	diffSliderY,diffSliderThickness);
 	draw_set_color(c_white);
-	draw_sprite(spr_note,0,diffX,diffSliderY);
+	draw_sprite(spr_pearl_white,0,diffX,diffSliderY);
 
 	
 	draw_set_color(c_white);

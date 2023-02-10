@@ -22,7 +22,7 @@ lastScoreLength=0.5;
 
 notes=ds_list_create();
 
-buttons1=[ord("Z"),ord("X")];
+buttons1=[ord("D"),ord("T")];
 buttons2=[mb_left,mb_right];
 
 cooldown=0;
